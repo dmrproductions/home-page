@@ -1,0 +1,18 @@
+[
+  {
+    "id": "72330da1-089f-4ed6-b9cf-6939cb09f3ee",
+    "authorName": "Marcus",
+    "message": "Just landed in Paris for Fashion Week! The runway show lineup is insane this year 🎭✈️",
+    "category": "friends",
+    "createdAt": "2026-06-26T16:51:00.998Z",
+    "minutesAgo": 0
+  },
+  {
+    "id": "8bdac68b-f6d0-4c70-a6f0-e0aee5ed4446",
+    "authorName": "Mom",
+    "message": "Just made your favorite dinner — come visit soon! 🍝",
+    "category": "family",
+    "createdAt": "2026-06-26T16:50:57.185Z",
+    "minutesAgo": 0
+  }
+]

@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 45%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.375rem;
+
+    /* ── Brand gold ────────────────────────── */
+    --gold:        #B8960C;
+    --gold-light:  #D4AF37;
+    --gold-pale:   #F5EFD6;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body { height: 100%; }
+  /* Lock scroll on desktop only — mobile uses natural page scroll */
+  @media (min-width: 768px) {
+    html, body { overflow: hidden; }
+  }
+  body {
+    @apply bg-white text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ── Gold utilities ──────────────────────────────── */
+.text-gold        { color: var(--gold); }
+.text-gold-light  { color: var(--gold-light); }
+.border-gold      { border-color: var(--gold); }
+.bg-gold          { background-color: var(--gold); }
+.bg-gold-pale     { background-color: var(--gold-pale); }
+
+/* ── Masthead font ───────────────────────────────── */
+.masthead {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ── Gold rule ───────────────────────────────────── */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--gold-light) 15%,
+    var(--gold) 50%,
+    var(--gold-light) 85%,
+    transparent 100%);
+}
+.gold-rule-left {
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 60%, transparent 100%);
+  width: 40px;
+}
+
+/* ── Marquee ─────────────────────────────────────── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 70s linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  align-items: center;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ── Feed grid ───────────────────────────────────── */
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 1024px) {
+  .feed-grid .feed-card:not(.feed-card-featured) { height: 17rem; }
+  .feed-grid .feed-card-featured { height: 28rem; }
+}
+@media (min-width: 1400px) {
+  .feed-grid .feed-card:not(.feed-card-featured) { height: 20rem; }
+  .feed-grid .feed-card-featured { height: 34rem; }
+}
+
+.feed-grid .feed-card-featured {
+  grid-column: 1 / -1;
+}
+
+/* ── Card shimmer ────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f5f5f5 25%, #e8e8e8 50%, #f5f5f5 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+/* ── Full screen reader ──────────────────────────── */
+.reader-headline {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ── Paparazzi flash ─────────────────────────────── */
+@keyframes pap-flash {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+.pap-flash { animation: pap-flash 1.5s ease-in-out infinite; }
+
+/* ── Gold filter pill (active) ───────────────────── */
+.filter-pill-active {
+  background-color: var(--gold);
+  color: #fff;
+}
